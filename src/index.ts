@@ -1,14 +1,13 @@
-import express, { Request, Response } from 'express'
+import { Container } from 'typedi';
+import { createExpressServer, useContainer } from 'routing-controllers';
+import 'reflect-metadata';
 
-const app = express();
 const port = process.env.PORT || 5000;
+useContainer(Container);
 
-app.get('/', (request: Request, response: Response) => {
-  response.send('Hello world!');
-});
-
-app.get('/open-api/test', (request: Request, response: Response) => {
-  response.json({test: 42});
+// TODO: add logs
+const app = createExpressServer({
+  controllers: [__dirname + '/controllers/**/*.js'],
 });
 
 app.listen(port, () => console.log(`Running on port ${port}`));
