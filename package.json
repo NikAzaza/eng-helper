@@ -2,6 +2,9 @@
   "name": "eng-helper",
   "version": "0.0.1",
   "description": "test project",
+  "engines": {
+    "node": "16.16.0"
+  },
   "main": "dist/index.js",
   "scripts": {
     "start": "tsc && node .",
